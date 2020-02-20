@@ -1,6 +1,6 @@
 // // Karma configuration file, see link for more information
 // // https://karma-runner.github.io/1.0/config/configuration-file.html
-// process.env.CHROME_BIN = require('puppeteer').executablePath() //Used for headless support
+process.env.CHROME_BIN = require('puppeteer').executablePath() //Used for headless support
 // module.exports = function (config) {
 //     config.set({
 //         basePath: '',
