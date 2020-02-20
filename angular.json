@@ -1,0 +1,170 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "legendary-dollop": {
+      "root": "projects/legendary-dollop",
+      "sourceRoot": "projects/legendary-dollop/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/legendary-dollop/tsconfig.lib.json",
+            "project": "projects/legendary-dollop/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/legendary-dollop/src/test.ts",
+            "tsConfig": "projects/legendary-dollop/tsconfig.spec.json",
+            "karmaConfig": "projects/legendary-dollop/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/legendary-dollop/tsconfig.lib.json",
+              "projects/legendary-dollop/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "legendary-dollop-test-app": {
+      "root": "projects/legendary-dollop-test-app/",
+      "sourceRoot": "projects/legendary-dollop-test-app/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/legendary-dollop-test-app",
+            "index": "projects/legendary-dollop-test-app/src/index.html",
+            "main": "projects/legendary-dollop-test-app/src/main.ts",
+            "polyfills": "projects/legendary-dollop-test-app/src/polyfills.ts",
+            "tsConfig": "projects/legendary-dollop-test-app/tsconfig.app.json",
+            "assets": [
+              "projects/legendary-dollop-test-app/src/favicon.ico",
+              "projects/legendary-dollop-test-app/src/assets"
+            ],
+            "styles": [
+              "projects/legendary-dollop-test-app/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/legendary-dollop-test-app/src/environments/environment.ts",
+                  "with": "projects/legendary-dollop-test-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "legendary-dollop-test-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "legendary-dollop-test-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "legendary-dollop-test-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/legendary-dollop-test-app/src/test.ts",
+            "polyfills": "projects/legendary-dollop-test-app/src/polyfills.ts",
+            "tsConfig": "projects/legendary-dollop-test-app/tsconfig.spec.json",
+            "karmaConfig": "projects/legendary-dollop-test-app/karma.conf.js",
+            "styles": [
+              "projects/legendary-dollop-test-app/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/legendary-dollop-test-app/src/favicon.ico",
+              "projects/legendary-dollop-test-app/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/legendary-dollop-test-app/tsconfig.app.json",
+              "projects/legendary-dollop-test-app/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "legendary-dollop-test-app-e2e": {
+      "root": "projects/legendary-dollop-test-app-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/legendary-dollop-test-app-e2e/protractor.conf.js",
+            "devServerTarget": "legendary-dollop-test-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "legendary-dollop-test-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/legendary-dollop-test-app-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "legendary-dollop"
+}
