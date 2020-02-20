@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { LegendaryDollopComponent } from './legendary-dollop.component';
+
 
 describe('LegendaryDollopComponent', () => {
   let component: LegendaryDollopComponent;
@@ -20,6 +20,6 @@ describe('LegendaryDollopComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component).toBeFalsy();
   });
 });
