@@ -61,6 +61,12 @@ module.exports = function (config) {
         coverageIstanbulReporter: {
             dir: require('path').join(__dirname, '../../coverage/legendary-dollop'),
             reports: ['lcovonly'],
+            thresholds: {
+                statements: 100,
+                lines: 100,
+                branches: 100,
+                functions: 100
+            },
             fixWebpackSourcePaths: true
         },
         reporters: ['progress', 'kjhtml'],
