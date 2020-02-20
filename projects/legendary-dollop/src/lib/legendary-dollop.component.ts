@@ -17,7 +17,9 @@ export class LegendaryDollopComponent implements OnInit {
     }
 
     newMethod() {
+        
         console.log('legendary-dollop');
+        
     }
 
 }
